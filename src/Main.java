@@ -1,9 +1,25 @@
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args)
-    {
-        Logger.setModo("WARN");
-        System.out.println(Logger.getModo());
+    public static void main(String[] args) {
+        Logger.getInstance("INFO");
+        Mariposa twinkle = new Mariposa("Twinkle");
         Golondrina pepita = new Golondrina("Pepita", 2);
+        Golondrina pepon = new Golondrina("Pepón", 1);
+        Paloma bombon = new Paloma("Bombón");
+        List<Aereo> list = Arrays.asList(
+                twinkle,
+                pepita,
+                pepon,
+                bombon);
+        for (Aereo animal : list) {
+            animal.comer(20);
+            animal.volar(2);
+            animal.comer(10);
+            animal.volar(3);
+            System.out.println(animal.distanciaRecorrida);
+        }
         System.out.println("Tests de Pepita");
         System.out.println(pepita.getEnergia());
         pepita.comer(5);
@@ -21,14 +37,12 @@ public class Main {
         pepita.pescar();
         System.out.println(pepita.getEnergia());
         System.out.println("Tests de Pepón");
-        Golondrina pepon = new Golondrina("Pepón", 1);
         System.out.println(pepon.getEnergia());
         pepon.comer(8);
         System.out.println(pepon.getEnergia());
         pepon.pescar();
         System.out.println(pepon.getEnergia());
         System.out.println("Tests de Bombón");
-        Paloma bombon = new Paloma("Bombón");
         System.out.println(bombon.getEnergia());
         bombon.comer(8);
         System.out.println(bombon.getEnergia());

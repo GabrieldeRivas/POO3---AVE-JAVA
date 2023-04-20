@@ -16,6 +16,7 @@ public class Golondrina extends Ave {
     public void pescar() {
         if (hayEnergiaPara(costoPesca)) {
             energia -= costoPesca;
+            distanciaRecorrida += 1;
             if (logroPescar()) {
                 energia += 10;
                 Logger.showInfo(nombre + " tuvo éxito en la pesca.");

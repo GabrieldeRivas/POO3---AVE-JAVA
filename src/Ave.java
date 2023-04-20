@@ -1,19 +1,22 @@
-public class Ave {
-    protected String nombre;
+public class Ave extends Aereo {
     protected int energia = 2;
 
     public Ave(String nombre) {
-        this.nombre = nombre;
+        super(nombre);
     }
 
+    @Override
     public void comer(int gramos) {
         energia += gramos;
         Logger.showInfo(nombre + " comió " + gramos + " gramos.");
     }
 
+
+    @Override
     public void volar(int kms) {
         if (hayEnergiaPara(kms * 3)) {
             energia -= kms * 3;
+            distanciaRecorrida += kms;
             Logger.showInfo(nombre + " voló " + kms + " kilómetros.");
         }
         else {

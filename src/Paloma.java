@@ -7,6 +7,7 @@ public class Paloma extends Ave {
     public void defecar() {
         if (hayEnergiaPara(1)) {
             energia -= 1;
+            distanciaRecorrida += 1;
             Logger.showInfo(nombre + " defecó.");
         }
         else {

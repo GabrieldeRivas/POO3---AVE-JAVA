@@ -1,26 +1,29 @@
+import java.util.Objects;
+
 public class Logger {
-    private static String modo = "INFO";
 
-    public static String getModo() {
-        return modo;
+    private static Logger log;
+    private static String modo;
+
+    private Logger(String modo) {
+        this.modo = modo;
     }
 
-    public static void setModo(String nuevoModo) {
-        if (nuevoModo == "INFO" || nuevoModo == "WARN" || nuevoModo == "ERROR") {
-            modo = nuevoModo;
+    public static Logger getInstance(String modo) {
+        if (log == null) {
+            log = new Logger(modo);
         }
-        else {
-            Logger.showError("El modo no es válido. Los modos posibles son: INFO, WARN y ERROR.");
-        }
+        return log;
     }
+
     public static void showInfo(String mensaje) {
-        if (modo == "INFO") {
+        if (Objects.equals(modo, "INFO")) {
             System.out.println("INFO: " + mensaje);
         }
     }
 
     public static void showWarn(String mensaje) {
-        if (modo == "INFO" || modo == "WARN" ) {
+        if (Objects.equals(modo, "INFO") || Objects.equals(modo, "WARN")) {
             System.out.println("WARN: " + mensaje);
         }
     }
